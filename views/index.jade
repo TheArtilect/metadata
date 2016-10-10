@@ -3,4 +3,16 @@ extends layout
 block content
   h1= title
   h3 By #{author}
-  p Welcome to #{title}
+  h5 Welcome to #{title}
+  p This is a file metadata microservice.  Uploading a file will return a JSON object of the file's name, file type, and size in bytes. 
+  
+  form(method="post",enctype="multipart/form-data",action="/")
+    p
+      input(type="file",name="upload")
+    p
+      input(type="submit")
+
+  h3 Example Output:
+  code(id="example-input" class="example") {"file name": "sample.jpg", "file type": "image/jpg", 'size': "1254261"}
+  br
+  

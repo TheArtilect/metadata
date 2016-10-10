@@ -4,8 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var multer = require('multer');
-var upload = multer({dest: "uploads/"})
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -15,6 +14,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.set('json spaces', 2);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -59,10 +59,5 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.post("/profile", upload.single('avatar'), function (req, res, next){
-  // req.file is the `avatar` file
-  // req.body will hold the text fields, if there were any 
-
-})
 
 module.exports = app;
